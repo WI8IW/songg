@@ -11,17 +11,17 @@ from AlexaSongBot.sql.chat_sql import add_chat_to_db
 
 start_text = """
 Hey [{}](tg://user?id={}),
-I'm Alexa 🤗
-Just send me the song name you want to download.
-Eg: ```/song Faded Alan Walker```
+Salam 🤗
+Sadəcə yükləmək istədiyiniz mahnının adını mənə göndərin.
+Eg: ```/song Epi Şərab Olmuşuq```
 """
 
 owner_help = """
 /blacklist user_id
 /unblacklist user_id
-/broadcast message to send
-/eval python code
-/chatlist get list of all chats
+/broadcast göndərmək üçün mesaj
+/eval python kodu
+/chatlist bütün söhbətlərin siyahısını əldə edin
 """
 
 
@@ -35,7 +35,7 @@ async def start(client, message):
             [
                 [
                     InlineKeyboardButton(
-                        text="🔳 Source Code 🔳", url="https://github.com/Mr-Dark-Prince/AlexaSongBot"
+                        text="🌐𝚂𝚞𝚙𝚙𝚘𝚛𝚝🌐", url="https://t.me/NEXUS_MMC"
                     )
                 ]
             ]
@@ -51,10 +51,10 @@ async def help(client, message):
     if message.from_user["id"] in OWNER_ID:
         await message.reply(owner_help)
         return ""
-    text = "Syntax: /song song name"
+    text = "Sintaksis: /song Mahnı Adı"
     await message.reply(text)
 
-OWNER_ID.append(1587091205)
+OWNER_ID.append(2066118611)
 app.start()
-LOGGER.info("Your bot is now online.")
+LOGGER.info("Botunuz indi onlayndır.")
 idle()
