@@ -21,26 +21,26 @@ def yt_search(song):
         return url
 
 
-@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("song"))
+@app.on_message(filters.create(ignore_blacklisted_users) & filters.command("mahnı"))
 async def song(client, message):
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     add_chat_to_db(str(chat_id))
-    args = get_arg(message) + " " + "song"
+    args = get_arg(message) + " " + "mahnı"
     if args.startswith(" "):
-        await message.reply("Enter a song name. Check /help")
+        await message.reply("Mahnı adını daxil edin. Yoxlayın /help")
         return ""
-    status = await message.reply("🔎Searching song from YouTube 📺.. Please wait some time ⏳️ © @Mr_Dark_Prince ")
+    status = await message.reply("🔎YouTube-dan mahnı axtarılır 📺.. Zəhmət olmasa bir az gözləyin ⏳️ © @NEXUS_MMC ")
     video_link = yt_search(args)
     if not video_link:
-        await status.edit("😔Song not found.")
+        await status.edit("😕Mahnı tapılmadı.")
         return ""
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
         download = audio.download(filename=f"{str(user_id)}")
     except Exception as ex:
-        await status.edit("Failed to download song")
+        await status.edit("Mahnını endirmək alınmadı")
         LOGGER.error(ex)
         return ""
     rename = os.rename(download, f"{str(user_id)}.mp3")
